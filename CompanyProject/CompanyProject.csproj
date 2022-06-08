@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6AF45E9-FDA4-49A0-9C7E-C4A0F8CC5577}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CompanyProject</RootNamespace>
+    <AssemblyName>CompanyProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClass.Designer.cs">
+      <DependentUpon>AddClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddReleaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddReleaseOrder.Designer.cs">
+      <DependentUpon>AddReleaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSalesOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSalesOrder.Designer.cs">
+      <DependentUpon>AddSalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddStore.Designer.cs">
+      <DependentUpon>AddStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSupplier.Designer.cs">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassEditText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassEditText.Designer.cs">
+      <DependentUpon>ClassEditText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes_Report.Designer.cs">
+      <DependentUpon>Classes_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassP.Designer.cs">
+      <DependentUpon>ClassP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Release_Order_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Has_Sale_Order_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Measure_Unit_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Report1_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Report_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_Unit_SelectB_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Store_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientEditText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEditText.Designer.cs">
+      <DependentUpon>ClientEditText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommonBetweenRelease_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommonBetweenSale_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Company.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyProjectDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyProjectDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyProjectDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyProjectDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit Class.Designer.cs">
+      <DependentUpon>Edit Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit Client.Designer.cs">
+      <DependentUpon>Edit Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditReleaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditReleaseOrder.Designer.cs">
+      <DependentUpon>EditReleaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSaleOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSaleOrder.Designer.cs">
+      <DependentUpon>EditSaleOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit_Store_Text.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit_Store_Text.Designer.cs">
+      <DependentUpon>Edit_Store_Text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EXPDA1_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXPDA_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Release_Order.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Order_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Order_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Order_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Order_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Order_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale_Order_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowClass.Designer.cs">
+      <DependentUpon>ShowClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowClass_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stores_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stores_Report.Designer.cs">
+      <DependentUpon>Stores_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store_Edit_Con.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store_Edit_Con.Designer.cs">
+      <DependentUpon>Store_Edit_Con.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store_Report2_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Store_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier Edit.Designer.cs">
+      <DependentUpon>Supplier Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierEditText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierEditText.Designer.cs">
+      <DependentUpon>SupplierEditText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_Delete_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_Insert_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_SelectAll_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_SelectBY_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_Update_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transfer.Designer.cs">
+      <DependentUpon>Transfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer_Classes_Result.cs">
+      <DependentUpon>Company.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddClass.resx">
+      <DependentUpon>AddClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddReleaseOrder.resx">
+      <DependentUpon>AddReleaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSalesOrder.resx">
+      <DependentUpon>AddSalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddStore.resx">
+      <DependentUpon>AddStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSupplier.resx">
+      <DependentUpon>AddSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassEditText.resx">
+      <DependentUpon>ClassEditText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes_Report.resx">
+      <DependentUpon>Classes_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassP.resx">
+      <DependentUpon>ClassP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientEditText.resx">
+      <DependentUpon>ClientEditText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Class.resx">
+      <DependentUpon>Edit Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit Client.resx">
+      <DependentUpon>Edit Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditReleaseOrder.resx">
+      <DependentUpon>EditReleaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSaleOrder.resx">
+      <DependentUpon>EditSaleOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit_Store_Text.resx">
+      <DependentUpon>Edit_Store_Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ShowClass.resx">
+      <DependentUpon>ShowClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stores_Report.resx">
+      <DependentUpon>Stores_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store_Edit_Con.resx">
+      <DependentUpon>Store_Edit_Con.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier Edit.resx">
+      <DependentUpon>Supplier Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierEditText.resx">
+      <DependentUpon>SupplierEditText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transfer.resx">
+      <DependentUpon>Transfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Company.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Company.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Company.edmx.diagram">
+      <DependentUpon>Company.edmx</DependentUpon>
+    </None>
+    <None Include="CompanyProjectDataSet.xsc">
+      <DependentUpon>CompanyProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CompanyProjectDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompanyProjectDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CompanyProjectDataSet.xss">
+      <DependentUpon>CompanyProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CompanyProjectDataSet1.xsc">
+      <DependentUpon>CompanyProjectDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CompanyProjectDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CompanyProjectDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CompanyProjectDataSet1.xss">
+      <DependentUpon>CompanyProjectDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Company.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Company.edmx</DependentUpon>
+      <LastGenOutput>Company.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Company.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Company.edmx</DependentUpon>
+      <LastGenOutput>Company.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72845f067b014a4caf2cca17fac2a5a7" Name="Diagram1">
+        <EntityTypeShape EntityType="CompanyProjectModel.Class" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Class_Has_Release_Order" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Class_Has_Sale_Order" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Class_Measure_Unit" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Client" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Release_Order" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Sale_Order" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Store" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyProjectModel.Supplier" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Class_Has__Class__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Class_Has__Class__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Class_Mea__Class__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Class_Has__Relea__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Class_Has__Order__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Sale_Orde__Clien__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Release_O__Store__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Release_O__Suppl__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.FK__Sale_Orde__Store__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyProjectModel.Class_Store" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

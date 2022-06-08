@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CompanyProjectModelStoreContainer" CdmEntityContainer="CompanyProjectEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Has_Release_Order">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order">
+        <MappingFragment StoreEntitySet="Class_Has_Release_Order">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Has_Sale_Order">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order">
+        <MappingFragment StoreEntitySet="Class_Has_Sale_Order">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Measure_Unit">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit">
+        <MappingFragment StoreEntitySet="Class_Measure_Unit">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Release_Order">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Release_Order">
+        <MappingFragment StoreEntitySet="Release_Order">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sale_Order">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Sale_Order">
+        <MappingFragment StoreEntitySet="Sale_Order">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="CompanyProjectModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Class_Store" TypeName="CompanyProjectModel.Class_Store" StoreEntitySet="Class_Store">
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Code" ColumnName="Class_Code" />
+      </EndProperty>
+      <EndProperty Name="Store">
+        <ScalarProperty Name="C_Name" ColumnName="Store_Name" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="Class_Delete" FunctionName="CompanyProjectModel.Store.Class_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Delete_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Delete" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Delete_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Insert" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Insert_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_SelectAll_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_SelectBY_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Update" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Update_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Delete" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Delete_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Insert" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Insert_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_SelectAll_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_SelectBY_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Update" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Update_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Insert" FunctionName="CompanyProjectModel.Store.Class_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Insert_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Delete" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Delete_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Insert" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Insert_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Measure_Unit_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_SelectAll_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Measure_Unit_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_SelectBY_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Update" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Update_Result">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_SelectAll" FunctionName="CompanyProjectModel.Store.Class_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_SelectAll_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_SelectBY" FunctionName="CompanyProjectModel.Store.Class_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_SelectBY_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_Delete" FunctionName="CompanyProjectModel.Store.Class_Store_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Delete_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_Insert" FunctionName="CompanyProjectModel.Store.Class_Store_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Insert_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Store_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_SelectAll_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Store_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_SelectBY_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_Unit_SelectB" FunctionName="CompanyProjectModel.Store.Class_Store_Unit_SelectB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Unit_SelectB_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Store_Update" FunctionName="CompanyProjectModel.Store.Class_Store_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Update_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Update" FunctionName="CompanyProjectModel.Store.Class_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Update_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Client_Delete" FunctionName="CompanyProjectModel.Store.Client_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Delete_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Client_Insert" FunctionName="CompanyProjectModel.Store.Client_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Insert_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Client_SelectAll" FunctionName="CompanyProjectModel.Store.Client_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Client_SelectAll_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Client_SelectBY" FunctionName="CompanyProjectModel.Store.Client_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Client_SelectBY_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Client_Update" FunctionName="CompanyProjectModel.Store.Client_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Update_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CommonBetweenRelease_Insert" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_Insert" />
+    <FunctionImportMapping FunctionImportName="CommonBetweenRelease_SelectAll" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.CommonBetweenRelease_SelectAll_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="C_Name1" ColumnName="_Name1" />
+          <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CommonBetweenRelease_Update2" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_Update2" />
+    <FunctionImportMapping FunctionImportName="CommonBetweenRelease_UpdateAll" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_UpdateAll" />
+    <FunctionImportMapping FunctionImportName="CommonBetweenSale_Insert" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Insert" />
+    <FunctionImportMapping FunctionImportName="CommonBetweenSale_SelectAll" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.CommonBetweenSale_SelectAll_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Name1" ColumnName="_Name1" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CommonBetweenSale_Update" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Update" />
+    <FunctionImportMapping FunctionImportName="CommonBetweenSale_Update2" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Update2" />
+    <FunctionImportMapping FunctionImportName="Release_Order_Delete" FunctionName="CompanyProjectModel.Store.Release_Order_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Delete_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Release_Order_Insert" FunctionName="CompanyProjectModel.Store.Release_Order_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Insert_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Release_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Release_Order_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_SelectAll_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Release_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Release_Order_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_SelectBY_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Release_Order_Update" FunctionName="CompanyProjectModel.Store.Release_Order_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Update_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sale_Order_Delete" FunctionName="CompanyProjectModel.Store.Sale_Order_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Delete_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sale_Order_Insert" FunctionName="CompanyProjectModel.Store.Sale_Order_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Insert_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sale_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Sale_Order_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_SelectAll_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sale_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Sale_Order_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_SelectBY_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sale_Order_Update" FunctionName="CompanyProjectModel.Store.Sale_Order_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Update_Result">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="C_Date" ColumnName="_Date" />
+          <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ShowClass" FunctionName="CompanyProjectModel.Store.ShowClass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.ShowClass_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_Delete" FunctionName="CompanyProjectModel.Store.Store_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Delete_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_Insert" FunctionName="CompanyProjectModel.Store.Store_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Insert_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_SelectAll" FunctionName="CompanyProjectModel.Store.Store_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_SelectAll_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_SelectBY" FunctionName="CompanyProjectModel.Store.Store_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_SelectBY_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_Update" FunctionName="CompanyProjectModel.Store.Store_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Update_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="C_Address" ColumnName="_Address" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Supplier_Delete" FunctionName="CompanyProjectModel.Store.Supplier_Delete">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Delete_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Supplier_Insert" FunctionName="CompanyProjectModel.Store.Supplier_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Insert_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Supplier_SelectAll" FunctionName="CompanyProjectModel.Store.Supplier_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_SelectAll_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Supplier_SelectBY" FunctionName="CompanyProjectModel.Store.Supplier_SelectBY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_SelectBY_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Supplier_Update" FunctionName="CompanyProjectModel.Store.Supplier_Update">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Update_Result">
+          <ScalarProperty Name="C_Name" ColumnName="_Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="C_Site" ColumnName="_Site" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Transfer_Classes" FunctionName="CompanyProjectModel.Store.Transfer_Classes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Transfer_Classes_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Store_Report2" FunctionName="CompanyProjectModel.Store.Store_Report2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Report2_Result">
+          <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+          <ScalarProperty Name="Store_Adrees" ColumnName="Store Adrees" />
+          <ScalarProperty Name="Store_Manager" ColumnName="Store Manager" />
+          <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+          <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+          <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Report" FunctionName="CompanyProjectModel.Store.Class_Report">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Report_Result">
+          <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+          <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+          <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Class_Report1" FunctionName="CompanyProjectModel.Store.Class_Report1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Report1_Result">
+          <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+          <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+          <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EXPDA" FunctionName="CompanyProjectModel.Store.EXPDA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.EXPDA_Result">
+          <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EXPDA1" FunctionName="CompanyProjectModel.Store.EXPDA1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CompanyProjectModel.EXPDA1_Result">
+          <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+          <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

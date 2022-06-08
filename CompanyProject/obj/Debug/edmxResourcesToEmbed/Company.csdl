@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class_Has_Sale_Order" Relationship="Self.FK__Class_Has__Class__2739D489" FromRole="Class" ToRole="Class_Has_Sale_Order" />
+    <NavigationProperty Name="Class_Has_Release_Order" Relationship="Self.FK__Class_Has__Class__2B0A656D" FromRole="Class" ToRole="Class_Has_Release_Order" />
+    <NavigationProperty Name="Class_Measure_Unit" Relationship="Self.FK__Class_Mea__Class__286302EC" FromRole="Class" ToRole="Class_Measure_Unit" />
+    <NavigationProperty Name="Stores" Relationship="Self.Class_Store" FromRole="Class" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Class_Has_Release_Order">
+    <Key>
+      <PropertyRef Name="Class_Code" />
+      <PropertyRef Name="Release_Order_Num" />
+    </Key>
+    <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Release_Order_Num" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Production_Date" Type="DateTime" Precision="0" />
+    <Property Name="Expiration_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__Class_Has__Class__2B0A656D" FromRole="Class_Has_Release_Order" ToRole="Class" />
+    <NavigationProperty Name="Release_Order" Relationship="Self.FK__Class_Has__Relea__2BFE89A6" FromRole="Class_Has_Release_Order" ToRole="Release_Order" />
+  </EntityType>
+  <EntityType Name="Class_Has_Sale_Order">
+    <Key>
+      <PropertyRef Name="Class_Code" />
+      <PropertyRef Name="Order_Sale_Num" />
+    </Key>
+    <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Order_Sale_Num" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__Class_Has__Class__2739D489" FromRole="Class_Has_Sale_Order" ToRole="Class" />
+    <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Class_Has__Order__282DF8C2" FromRole="Class_Has_Sale_Order" ToRole="Sale_Order" />
+  </EntityType>
+  <EntityType Name="Class_Measure_Unit">
+    <Key>
+      <PropertyRef Name="Class_Code" />
+      <PropertyRef Name="Measure_Unit" />
+    </Key>
+    <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Measure_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__Class_Mea__Class__286302EC" FromRole="Class_Measure_Unit" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Fax" />
+    </Key>
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="C_Site" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Sale_Orde__Clien__52593CB8" FromRole="Client" ToRole="Sale_Order" />
+  </EntityType>
+  <EntityType Name="Release_Order">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="Num" Type="Int64" Nullable="false" />
+    <Property Name="Store_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C_Date" Type="DateTime" Precision="0" />
+    <Property Name="Supplier_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class_Has_Release_Order" Relationship="Self.FK__Class_Has__Relea__2BFE89A6" FromRole="Release_Order" ToRole="Class_Has_Release_Order" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Release_O__Store__36B12243" FromRole="Release_Order" ToRole="Store" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK__Release_O__Suppl__37A5467C" FromRole="Release_Order" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Sale_Order">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="Num" Type="Int64" Nullable="false" />
+    <Property Name="Store_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C_Date" Type="DateTime" Precision="0" />
+    <Property Name="Client_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class_Has_Sale_Order" Relationship="Self.FK__Class_Has__Order__282DF8C2" FromRole="Sale_Order" ToRole="Class_Has_Sale_Order" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Sale_Orde__Clien__52593CB8" FromRole="Sale_Order" ToRole="Client" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Sale_Orde__Store__5165187F" FromRole="Sale_Order" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="C_Name" />
+    </Key>
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="C_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Release_Order" Relationship="Self.FK__Release_O__Store__36B12243" FromRole="Store" ToRole="Release_Order" />
+    <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Sale_Orde__Store__5165187F" FromRole="Store" ToRole="Sale_Order" />
+    <NavigationProperty Name="Classes" Relationship="Self.Class_Store" FromRole="Store" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Fax" />
+    </Key>
+    <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="C_Site" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Release_Order" Relationship="Self.FK__Release_O__Suppl__37A5467C" FromRole="Supplier" ToRole="Release_Order" />
+  </EntityType>
+  <Association Name="FK__Class_Has__Class__2739D489">
+    <End Role="Class" Type="Self.Class" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Class_Has_Sale_Order">
+        <PropertyRef Name="Class_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class_Has__Class__2B0A656D">
+    <End Role="Class" Type="Self.Class" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Class_Has_Release_Order">
+        <PropertyRef Name="Class_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class_Mea__Class__286302EC">
+    <End Role="Class" Type="Self.Class" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Class_Measure_Unit" Type="Self.Class_Measure_Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Class_Measure_Unit">
+        <PropertyRef Name="Class_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class_Has__Relea__2BFE89A6">
+    <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="1" />
+    <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Release_Order">
+        <PropertyRef Name="Num" />
+      </Principal>
+      <Dependent Role="Class_Has_Release_Order">
+        <PropertyRef Name="Release_Order_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class_Has__Order__282DF8C2">
+    <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="1" />
+    <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale_Order">
+        <PropertyRef Name="Num" />
+      </Principal>
+      <Dependent Role="Class_Has_Sale_Order">
+        <PropertyRef Name="Order_Sale_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale_Orde__Clien__52593CB8">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Fax" />
+      </Principal>
+      <Dependent Role="Sale_Order">
+        <PropertyRef Name="Client_Fax" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Release_O__Store__36B12243">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="C_Name" />
+      </Principal>
+      <Dependent Role="Release_Order">
+        <PropertyRef Name="Store_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Release_O__Suppl__37A5467C">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Fax" />
+      </Principal>
+      <Dependent Role="Release_Order">
+        <PropertyRef Name="Supplier_Fax" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale_Orde__Store__5165187F">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="C_Name" />
+      </Principal>
+      <Dependent Role="Sale_Order">
+        <PropertyRef Name="Store_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Class_Store">
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CompanyProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Class_Has_Release_Order" EntityType="Self.Class_Has_Release_Order" />
+    <EntitySet Name="Class_Has_Sale_Order" EntityType="Self.Class_Has_Sale_Order" />
+    <EntitySet Name="Class_Measure_Unit" EntityType="Self.Class_Measure_Unit" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Release_Order" EntityType="Self.Release_Order" />
+    <EntitySet Name="Sale_Order" EntityType="Self.Sale_Order" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <AssociationSet Name="FK__Class_Has__Class__2739D489" Association="Self.FK__Class_Has__Class__2739D489">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class_Has__Class__2B0A656D" Association="Self.FK__Class_Has__Class__2B0A656D">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class_Mea__Class__286302EC" Association="Self.FK__Class_Mea__Class__286302EC">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Class_Measure_Unit" EntitySet="Class_Measure_Unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class_Has__Relea__2BFE89A6" Association="Self.FK__Class_Has__Relea__2BFE89A6">
+      <End Role="Release_Order" EntitySet="Release_Order" />
+      <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class_Has__Order__282DF8C2" Association="Self.FK__Class_Has__Order__282DF8C2">
+      <End Role="Sale_Order" EntitySet="Sale_Order" />
+      <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale_Orde__Clien__52593CB8" Association="Self.FK__Sale_Orde__Clien__52593CB8">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Sale_Order" EntitySet="Sale_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Release_O__Store__36B12243" Association="Self.FK__Release_O__Store__36B12243">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Release_Order" EntitySet="Release_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Release_O__Suppl__37A5467C" Association="Self.FK__Release_O__Suppl__37A5467C">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Release_Order" EntitySet="Release_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale_Orde__Store__5165187F" Association="Self.FK__Sale_Orde__Store__5165187F">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Sale_Order" EntitySet="Sale_Order" />
+    </AssociationSet>
+    <AssociationSet Name="Class_Store" Association="Self.Class_Store">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <FunctionImport Name="Class_Delete" ReturnType="Collection(CompanyProjectModel.Class_Delete_Result)">
+      <Parameter Name="CO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Release_Order_Delete" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Delete_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="RO" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Release_Order_Insert" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Insert_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="RO" Mode="In" Type="Int64" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+      <Parameter Name="PRO_D" Mode="In" Type="DateTime" />
+      <Parameter Name="EXP_D" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Release_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_SelectAll_Result)" />
+    <FunctionImport Name="Class_Has_Release_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_SelectBY_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="RO" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Release_Order_Update" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Update_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="RO" Mode="In" Type="Int64" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+      <Parameter Name="PRO_D" Mode="In" Type="DateTime" />
+      <Parameter Name="EXP_D" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Sale_Order_Delete" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Delete_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="OS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Sale_Order_Insert" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Insert_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="OS" Mode="In" Type="Int64" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Sale_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_SelectAll_Result)" />
+    <FunctionImport Name="Class_Has_Sale_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_SelectBY_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="OS" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Has_Sale_Order_Update" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Update_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="OS" Mode="In" Type="Int64" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Insert" ReturnType="Collection(CompanyProjectModel.Class_Insert_Result)">
+      <Parameter Name="CO" Mode="In" Type="String" />
+      <Parameter Name="NA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Measure_Unit_Delete" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Delete_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Measure_Unit_Insert" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Insert_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="MU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Measure_Unit_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_SelectAll_Result)" />
+    <FunctionImport Name="Class_Measure_Unit_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_SelectBY_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="MU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Measure_Unit_Update" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Update_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="MU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_SelectAll_Result)" />
+    <FunctionImport Name="Class_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_SelectBY_Result)">
+      <Parameter Name="CO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Store_Delete" ReturnType="Collection(CompanyProjectModel.Class_Store_Delete_Result)">
+      <Parameter Name="SN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Store_Insert" ReturnType="Collection(CompanyProjectModel.Class_Store_Insert_Result)">
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Store_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Store_SelectAll_Result)" />
+    <FunctionImport Name="Class_Store_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Store_SelectBY_Result)">
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="SN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Store_Unit_SelectB" ReturnType="Collection(CompanyProjectModel.Class_Store_Unit_SelectB_Result)">
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Store_Update" ReturnType="Collection(CompanyProjectModel.Class_Store_Update_Result)">
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Update" ReturnType="Collection(CompanyProjectModel.Class_Update_Result)">
+      <Parameter Name="CO" Mode="In" Type="String" />
+      <Parameter Name="NA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Client_Delete" ReturnType="Collection(CompanyProjectModel.Client_Delete_Result)">
+      <Parameter Name="FAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Client_Insert" ReturnType="Collection(CompanyProjectModel.Client_Insert_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="TELE" Mode="In" Type="String" />
+      <Parameter Name="PHO" Mode="In" Type="String" />
+      <Parameter Name="FAX" Mode="In" Type="String" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="SIT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Client_SelectAll" ReturnType="Collection(CompanyProjectModel.Client_SelectAll_Result)" />
+    <FunctionImport Name="Client_SelectBY" ReturnType="Collection(CompanyProjectModel.Client_SelectBY_Result)">
+      <Parameter Name="FAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Client_Update" ReturnType="Collection(CompanyProjectModel.Client_Update_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="TELE" Mode="In" Type="String" />
+      <Parameter Name="PHO" Mode="In" Type="String" />
+      <Parameter Name="FAX" Mode="In" Type="String" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="SIT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenRelease_Insert">
+      <Parameter Name="STRNAM" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+      <Parameter Name="SUPNAM" Mode="In" Type="String" />
+      <Parameter Name="PROD" Mode="In" Type="DateTime" />
+      <Parameter Name="EXEP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenRelease_SelectAll" ReturnType="Collection(CompanyProjectModel.CommonBetweenRelease_SelectAll_Result)" />
+    <FunctionImport Name="CommonBetweenRelease_Update2">
+      <Parameter Name="STRN" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+      <Parameter Name="SUPNAM" Mode="In" Type="String" />
+      <Parameter Name="PROD" Mode="In" Type="DateTime" />
+      <Parameter Name="EXP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenRelease_UpdateAll">
+      <Parameter Name="STRN" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+      <Parameter Name="SUPNAM" Mode="In" Type="String" />
+      <Parameter Name="PROD" Mode="In" Type="DateTime" />
+      <Parameter Name="EXP" Mode="In" Type="DateTime" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="SUPFAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenSale_Insert">
+      <Parameter Name="STRNAM" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="CLINAM" Mode="In" Type="String" />
+      <Parameter Name="QUANTITY" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenSale_SelectAll" ReturnType="Collection(CompanyProjectModel.CommonBetweenSale_SelectAll_Result)" />
+    <FunctionImport Name="CommonBetweenSale_Update">
+      <Parameter Name="STRNAM" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="CLINAM" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="CLIFAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CommonBetweenSale_Update2">
+      <Parameter Name="STRNAM" Mode="In" Type="String" />
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="CLSNAM" Mode="In" Type="String" />
+      <Parameter Name="CLINAM" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Release_Order_Delete" ReturnType="Collection(CompanyProjectModel.Release_Order_Delete_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Release_Order_Insert" ReturnType="Collection(CompanyProjectModel.Release_Order_Insert_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="DT" Mode="In" Type="DateTime" />
+      <Parameter Name="SF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Release_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Release_Order_SelectAll_Result)" />
+    <FunctionImport Name="Release_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Release_Order_SelectBY_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Release_Order_Update" ReturnType="Collection(CompanyProjectModel.Release_Order_Update_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="DT" Mode="In" Type="DateTime" />
+      <Parameter Name="SF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sale_Order_Delete" ReturnType="Collection(CompanyProjectModel.Sale_Order_Delete_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Sale_Order_Insert" ReturnType="Collection(CompanyProjectModel.Sale_Order_Insert_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="DT" Mode="In" Type="DateTime" />
+      <Parameter Name="CF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sale_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Sale_Order_SelectAll_Result)" />
+    <FunctionImport Name="Sale_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Sale_Order_SelectBY_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="Sale_Order_Update" ReturnType="Collection(CompanyProjectModel.Sale_Order_Update_Result)">
+      <Parameter Name="NUM" Mode="In" Type="Int64" />
+      <Parameter Name="SN" Mode="In" Type="String" />
+      <Parameter Name="DT" Mode="In" Type="DateTime" />
+      <Parameter Name="CF" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ShowClass" ReturnType="Collection(CompanyProjectModel.ShowClass_Result)">
+      <Parameter Name="STN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Store_Delete" ReturnType="Collection(CompanyProjectModel.Store_Delete_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Store_Insert" ReturnType="Collection(CompanyProjectModel.Store_Insert_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="ADRS" Mode="In" Type="String" />
+      <Parameter Name="MNGR" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Store_SelectAll" ReturnType="Collection(CompanyProjectModel.Store_SelectAll_Result)" />
+    <FunctionImport Name="Store_SelectBY" ReturnType="Collection(CompanyProjectModel.Store_SelectBY_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Store_Update" ReturnType="Collection(CompanyProjectModel.Store_Update_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="ADRS" Mode="In" Type="String" />
+      <Parameter Name="MNGR" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supplier_Delete" ReturnType="Collection(CompanyProjectModel.Supplier_Delete_Result)">
+      <Parameter Name="FAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supplier_Insert" ReturnType="Collection(CompanyProjectModel.Supplier_Insert_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="TELE" Mode="In" Type="String" />
+      <Parameter Name="PHO" Mode="In" Type="String" />
+      <Parameter Name="FAX" Mode="In" Type="String" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="SIT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supplier_SelectAll" ReturnType="Collection(CompanyProjectModel.Supplier_SelectAll_Result)" />
+    <FunctionImport Name="Supplier_SelectBY" ReturnType="Collection(CompanyProjectModel.Supplier_SelectBY_Result)">
+      <Parameter Name="FAX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Supplier_Update" ReturnType="Collection(CompanyProjectModel.Supplier_Update_Result)">
+      <Parameter Name="NA" Mode="In" Type="String" />
+      <Parameter Name="TELE" Mode="In" Type="String" />
+      <Parameter Name="PHO" Mode="In" Type="String" />
+      <Parameter Name="FAX" Mode="In" Type="String" />
+      <Parameter Name="MAIL" Mode="In" Type="String" />
+      <Parameter Name="SIT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Transfer_Classes" ReturnType="Collection(CompanyProjectModel.Transfer_Classes_Result)">
+      <Parameter Name="ONUM" Mode="In" Type="Int64" />
+      <Parameter Name="CCO" Mode="In" Type="String" />
+      <Parameter Name="FST" Mode="In" Type="String" />
+      <Parameter Name="TST" Mode="In" Type="String" />
+      <Parameter Name="QUAN" Mode="In" Type="String" />
+      <Parameter Name="SUPNAM" Mode="In" Type="String" />
+      <Parameter Name="PROD" Mode="In" Type="DateTime" />
+      <Parameter Name="EXP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Store_Report2" ReturnType="Collection(CompanyProjectModel.Store_Report2_Result)">
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Class_Report" ReturnType="Collection(CompanyProjectModel.Class_Report_Result)" />
+    <FunctionImport Name="Class_Report1" ReturnType="Collection(CompanyProjectModel.Class_Report1_Result)">
+      <Parameter Name="STRNM" Mode="In" Type="String" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="EXPDA" ReturnType="Collection(CompanyProjectModel.EXPDA_Result)">
+      <Parameter Name="TIME" Mode="In" Type="Int64" />
+      <Parameter Name="DAT" Mode="In" Type="DateTime" />
+      <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="EXPDA1" ReturnType="Collection(CompanyProjectModel.EXPDA1_Result)">
+      <Parameter Name="TIME" Mode="In" Type="Int64" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Class_Delete_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Release_Order_Delete_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Release_Order_Insert_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Release_Order_SelectAll_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Release_Order_SelectBY_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Release_Order_Update_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Sale_Order_Delete_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Sale_Order_Insert_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Sale_Order_SelectAll_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Sale_Order_SelectBY_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Has_Sale_Order_Update_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Insert_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Measure_Unit_Delete_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Measure_Unit_Insert_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Measure_Unit_SelectAll_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Measure_Unit_SelectBY_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Measure_Unit_Update_Result">
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_SelectAll_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_SelectBY_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_Delete_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_Insert_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_SelectAll_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_SelectBY_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_Unit_SelectB_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Store_Update_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Class_Update_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Client_Delete_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Client_Insert_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Client_SelectAll_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Client_SelectBY_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Client_Update_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="CommonBetweenRelease_SelectAll_Result">
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C_Name1" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+    <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CommonBetweenSale_SelectAll_Result">
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C_Name1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Release_Order_Delete_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Release_Order_Insert_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Release_Order_SelectAll_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Release_Order_SelectBY_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Release_Order_Update_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sale_Order_Delete_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sale_Order_Insert_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sale_Order_SelectAll_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sale_Order_SelectBY_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sale_Order_Update_Result">
+    <Property Type="Int64" Name="Num" Nullable="false" />
+    <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="C_Date" Nullable="true" />
+    <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ShowClass_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Store_Delete_Result">
+    <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Store_Insert_Result">
+    <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Store_SelectAll_Result">
+    <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Store_SelectBY_Result">
+    <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Store_Update_Result">
+    <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Supplier_Delete_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Supplier_Insert_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Supplier_SelectAll_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Supplier_SelectBY_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Supplier_Update_Result">
+    <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Transfer_Classes_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Store_Report2_Result">
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Store_Adrees" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Store_Manager" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+    <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Report_Result">
+    <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+    <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Class_Report1_Result">
+    <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+    <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="EXPDA_Result">
+    <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="EXPDA1_Result">
+    <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+  </ComplexType>
+</Schema>

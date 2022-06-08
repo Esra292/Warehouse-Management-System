@@ -1,0 +1,141 @@
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.exe.config
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.AssemblyReference.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Form1.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Properties.Resources.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.GenerateResource.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.CoreCompileInputs.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\bin\Debug\EntityFramework.dll
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\bin\Debug\EntityFramework.xml
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Edit_Class.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.CopyComplete
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.ClassEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddStore.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Edit_Store_Text.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Store_Edit_Con.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\bin\Debug\CompanyProject.exe.config
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\bin\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\bin\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\bin\Debug\EntityFramework.dll
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\bin\Debug\EntityFramework.xml
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.AssemblyReference.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.AddClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.AddStore.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.ClassEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Class.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Store_Text.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Form1.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Properties.Resources.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Store_Edit_Con.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.GenerateResource.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CoreCompileInputs.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CopyComplete
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.AddSupplier.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.Supplier_Edit.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy\CompanyProject\obj\Debug\CompanyProject.SupplierEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.exe.config
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\bin\Debug\EntityFramework.dll
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\bin\Debug\EntityFramework.xml
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddStore.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddSupplier.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ClassEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Class.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Store_Text.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Form1.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Properties.Resources.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Store_Edit_Con.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Supplier_Edit.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.SupplierEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.GenerateResource.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CoreCompileInputs.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CopyComplete
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ShowClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddClient.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Client.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ClientEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddSalesOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.EditSaleOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddReleaseOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.EditReleaseOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.AssemblyReference.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Transfer.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.PleaseEnter.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.exe.config
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\bin\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\bin\Debug\EntityFramework.dll
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\bin\Debug\EntityFramework.xml
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.AssemblyReference.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddClient.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddReleaseOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddSalesOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddStore.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.AddSupplier.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ClassEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ClientEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Class.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Client.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.EditReleaseOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.EditSaleOrder.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Edit_Store_Text.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Form1.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Properties.Resources.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ShowClass.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Stores_Report.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Store_Edit_Con.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Supplier_Edit.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.SupplierEditText.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Transfer.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.GenerateResource.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CoreCompileInputs.cache
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.csproj.CopyComplete
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.Classes_Report.resources
+D:\ITI\Linq and EF\Project\VS\CompanyProject - Copy - Copy - Copy\CompanyProject\obj\Debug\CompanyProject.ClassP.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.exe.config
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\bin\Debug\CompanyProject.pdb
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\bin\Debug\EntityFramework.dll
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\bin\Debug\EntityFramework.xml
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.AssemblyReference.cache
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddClass.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddClient.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddReleaseOrder.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddSalesOrder.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddStore.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.AddSupplier.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.ClassEditText.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Classes_Report.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.ClassP.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.ClientEditText.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Edit_Class.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Edit_Client.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.EditReleaseOrder.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.EditSaleOrder.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Edit_Store_Text.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Form1.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Properties.Resources.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.ShowClass.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Stores_Report.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Store_Edit_Con.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Supplier_Edit.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.SupplierEditText.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.Transfer.resources
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.GenerateResource.cache
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.CoreCompileInputs.cache
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.csproj.CopyComplete
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.exe
+D:\ITI\Linq and EF\Project\TOS\CompanyProject\CompanyProject\obj\Debug\CompanyProject.pdb

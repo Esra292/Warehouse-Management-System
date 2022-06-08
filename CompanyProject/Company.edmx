@@ -1,0 +1,2207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CompanyProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Class_Has_Release_Order">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Release_Order_Num" />
+          </Key>
+          <Property Name="Class_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Release_Order_Num" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+          <Property Name="Production_Date" Type="date" />
+          <Property Name="Expiration_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Class_Has_Sale_Order">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Order_Sale_Num" />
+          </Key>
+          <Property Name="Class_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Order_Sale_Num" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Class_Measure_Unit">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Measure_Unit" />
+          </Key>
+          <Property Name="Class_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Measure_Unit" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class_Store">
+          <Key>
+            <PropertyRef Name="Store_Name" />
+            <PropertyRef Name="Class_Code" />
+          </Key>
+          <Property Name="Store_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Class_Code" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Fax" />
+          </Key>
+          <Property Name="_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="7" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="_Site" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Release_Order">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="bigint" Nullable="false" />
+          <Property Name="Store_Name" Type="varchar" MaxLength="50" />
+          <Property Name="_Date" Type="date" />
+          <Property Name="Supplier_Fax" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sale_Order">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="bigint" Nullable="false" />
+          <Property Name="Store_Name" Type="varchar" MaxLength="50" />
+          <Property Name="_Date" Type="date" />
+          <Property Name="Client_Fax" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="_Name" />
+          </Key>
+          <Property Name="_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Manager" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Fax" />
+          </Key>
+          <Property Name="_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="7" />
+          <Property Name="Phone" Type="varchar" MaxLength="11" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="_Site" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Class_Has__Class__2739D489">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Has_Sale_Order">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Class__2B0A656D">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Has_Release_Order">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Order__282DF8C2">
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="1" />
+          <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale_Order">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Class_Has_Sale_Order">
+              <PropertyRef Name="Order_Sale_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Relea__2BFE89A6">
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="1" />
+          <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Release_Order">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Class_Has_Release_Order">
+              <PropertyRef Name="Release_Order_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Mea__Class__286302EC">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Measure_Unit" Type="Self.Class_Measure_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Measure_Unit">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Sto__Class__2C3393D0">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Store" Type="Self.Class_Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Store">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Sto__Store__2B3F6F97">
+          <End Role="Store" Type="Self.Store" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Store" Type="Self.Class_Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="_Name" />
+            </Principal>
+            <Dependent Role="Class_Store">
+              <PropertyRef Name="Store_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Release_O__Store__36B12243">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="_Name" />
+            </Principal>
+            <Dependent Role="Release_Order">
+              <PropertyRef Name="Store_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Release_O__Suppl__37A5467C">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Fax" />
+            </Principal>
+            <Dependent Role="Release_Order">
+              <PropertyRef Name="Supplier_Fax" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Orde__Clien__52593CB8">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Fax" />
+            </Principal>
+            <Dependent Role="Sale_Order">
+              <PropertyRef Name="Client_Fax" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Orde__Store__5165187F">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="_Name" />
+            </Principal>
+            <Dependent Role="Sale_Order">
+              <PropertyRef Name="Store_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Class_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Release_Order_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="RO" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Release_Order_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="RO" Type="bigint" Mode="In" />
+          <Parameter Name="QTY" Type="varchar" Mode="In" />
+          <Parameter Name="PRO_D" Type="date" Mode="In" />
+          <Parameter Name="EXP_D" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Release_Order_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_Has_Release_Order_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="RO" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Release_Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="RO" Type="bigint" Mode="In" />
+          <Parameter Name="QTY" Type="varchar" Mode="In" />
+          <Parameter Name="PRO_D" Type="date" Mode="In" />
+          <Parameter Name="EXP_D" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Sale_Order_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="OS" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Sale_Order_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="OS" Type="bigint" Mode="In" />
+          <Parameter Name="QTY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Sale_Order_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_Has_Sale_Order_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="OS" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Class_Has_Sale_Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="OS" Type="bigint" Mode="In" />
+          <Parameter Name="QTY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CO" Type="varchar" Mode="In" />
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Measure_Unit_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Measure_Unit_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="MU" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Measure_Unit_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_Measure_Unit_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="MU" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Measure_Unit_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="MU" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_Report1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRNM" Type="varchar" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="DAT1" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Class_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Store_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Store_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Store_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Class_Store_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Store_Unit_SelectB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Store_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Class_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CO" Type="varchar" Mode="In" />
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Client_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Client_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="TELE" Type="varchar" Mode="In" />
+          <Parameter Name="PHO" Type="varchar" Mode="In" />
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+          <Parameter Name="MAIL" Type="varchar" Mode="In" />
+          <Parameter Name="SIT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Client_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Client_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Client_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="TELE" Type="varchar" Mode="In" />
+          <Parameter Name="PHO" Type="varchar" Mode="In" />
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+          <Parameter Name="MAIL" Type="varchar" Mode="In" />
+          <Parameter Name="SIT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenRelease_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRNAM" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+          <Parameter Name="SUPNAM" Type="varchar" Mode="In" />
+          <Parameter Name="PROD" Type="date" Mode="In" />
+          <Parameter Name="EXEP" Type="date" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenRelease_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CommonBetweenRelease_Update2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRN" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+          <Parameter Name="SUPNAM" Type="varchar" Mode="In" />
+          <Parameter Name="PROD" Type="date" Mode="In" />
+          <Parameter Name="EXP" Type="date" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenRelease_UpdateAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRN" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+          <Parameter Name="SUPNAM" Type="varchar" Mode="In" />
+          <Parameter Name="PROD" Type="date" Mode="In" />
+          <Parameter Name="EXP" Type="date" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="SUPFAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenSale_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRNAM" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="CLINAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUANTITY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenSale_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CommonBetweenSale_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRNAM" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="CLINAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="CLIFAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CommonBetweenSale_Update2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STRNAM" Type="varchar" Mode="In" />
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="CLSNAM" Type="varchar" Mode="In" />
+          <Parameter Name="CLINAM" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EXPDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIME" Type="bigint" Mode="In" />
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="DAT1" Type="date" Mode="In" />
+        </Function>
+        <Function Name="EXPDA1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIME" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Release_Order_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Release_Order_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="DT" Type="date" Mode="In" />
+          <Parameter Name="SF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Release_Order_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Release_Order_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Release_Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="DT" Type="date" Mode="In" />
+          <Parameter Name="SF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sale_Order_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Sale_Order_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="DT" Type="date" Mode="In" />
+          <Parameter Name="CF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sale_Order_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sale_Order_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Sale_Order_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUM" Type="bigint" Mode="In" />
+          <Parameter Name="SN" Type="varchar" Mode="In" />
+          <Parameter Name="DT" Type="date" Mode="In" />
+          <Parameter Name="CF" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ShowClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Store_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Store_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="ADRS" Type="varchar" Mode="In" />
+          <Parameter Name="MNGR" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Store_Report2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DAT" Type="date" Mode="In" />
+          <Parameter Name="DAT1" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Store_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Store_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Store_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="ADRS" Type="varchar" Mode="In" />
+          <Parameter Name="MNGR" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="TELE" Type="varchar" Mode="In" />
+          <Parameter Name="PHO" Type="varchar" Mode="In" />
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+          <Parameter Name="MAIL" Type="varchar" Mode="In" />
+          <Parameter Name="SIT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supplier_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Supplier_SelectBY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supplier_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NA" Type="varchar" Mode="In" />
+          <Parameter Name="TELE" Type="varchar" Mode="In" />
+          <Parameter Name="PHO" Type="varchar" Mode="In" />
+          <Parameter Name="FAX" Type="varchar" Mode="In" />
+          <Parameter Name="MAIL" Type="varchar" Mode="In" />
+          <Parameter Name="SIT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Transfer_Classes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ONUM" Type="bigint" Mode="In" />
+          <Parameter Name="CCO" Type="varchar" Mode="In" />
+          <Parameter Name="FST" Type="varchar" Mode="In" />
+          <Parameter Name="TST" Type="varchar" Mode="In" />
+          <Parameter Name="QUAN" Type="varchar" Mode="In" />
+          <Parameter Name="SUPNAM" Type="varchar" Mode="In" />
+          <Parameter Name="PROD" Type="date" Mode="In" />
+          <Parameter Name="EXP" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="CompanyProjectModelStoreContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Has_Release_Order" EntityType="Self.Class_Has_Release_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Has_Sale_Order" EntityType="Self.Class_Has_Sale_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Measure_Unit" EntityType="Self.Class_Measure_Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Store" EntityType="Self.Class_Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Release_Order" EntityType="Self.Release_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale_Order" EntityType="Self.Sale_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Class_Has__Class__2739D489" Association="Self.FK__Class_Has__Class__2739D489">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Class__2B0A656D" Association="Self.FK__Class_Has__Class__2B0A656D">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Order__282DF8C2" Association="Self.FK__Class_Has__Order__282DF8C2">
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+            <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Relea__2BFE89A6" Association="Self.FK__Class_Has__Relea__2BFE89A6">
+            <End Role="Release_Order" EntitySet="Release_Order" />
+            <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Mea__Class__286302EC" Association="Self.FK__Class_Mea__Class__286302EC">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_Measure_Unit" EntitySet="Class_Measure_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Sto__Class__2C3393D0" Association="Self.FK__Class_Sto__Class__2C3393D0">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_Store" EntitySet="Class_Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Sto__Store__2B3F6F97" Association="Self.FK__Class_Sto__Store__2B3F6F97">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Class_Store" EntitySet="Class_Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Release_O__Store__36B12243" Association="Self.FK__Release_O__Store__36B12243">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Release_Order" EntitySet="Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Release_O__Suppl__37A5467C" Association="Self.FK__Release_O__Suppl__37A5467C">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Release_Order" EntitySet="Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Orde__Clien__52593CB8" Association="Self.FK__Sale_Orde__Clien__52593CB8">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Orde__Store__5165187F" Association="Self.FK__Sale_Orde__Store__5165187F">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompanyProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class_Has_Sale_Order" Relationship="Self.FK__Class_Has__Class__2739D489" FromRole="Class" ToRole="Class_Has_Sale_Order" />
+          <NavigationProperty Name="Class_Has_Release_Order" Relationship="Self.FK__Class_Has__Class__2B0A656D" FromRole="Class" ToRole="Class_Has_Release_Order" />
+          <NavigationProperty Name="Class_Measure_Unit" Relationship="Self.FK__Class_Mea__Class__286302EC" FromRole="Class" ToRole="Class_Measure_Unit" />
+          <NavigationProperty Name="Stores" Relationship="Self.Class_Store" FromRole="Class" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Class_Has_Release_Order">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Release_Order_Num" />
+          </Key>
+          <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Release_Order_Num" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Production_Date" Type="DateTime" Precision="0" />
+          <Property Name="Expiration_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class_Has__Class__2B0A656D" FromRole="Class_Has_Release_Order" ToRole="Class" />
+          <NavigationProperty Name="Release_Order" Relationship="Self.FK__Class_Has__Relea__2BFE89A6" FromRole="Class_Has_Release_Order" ToRole="Release_Order" />
+        </EntityType>
+        <EntityType Name="Class_Has_Sale_Order">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Order_Sale_Num" />
+          </Key>
+          <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order_Sale_Num" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class_Has__Class__2739D489" FromRole="Class_Has_Sale_Order" ToRole="Class" />
+          <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Class_Has__Order__282DF8C2" FromRole="Class_Has_Sale_Order" ToRole="Sale_Order" />
+        </EntityType>
+        <EntityType Name="Class_Measure_Unit">
+          <Key>
+            <PropertyRef Name="Class_Code" />
+            <PropertyRef Name="Measure_Unit" />
+          </Key>
+          <Property Name="Class_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Measure_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class_Mea__Class__286302EC" FromRole="Class_Measure_Unit" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Fax" />
+          </Key>
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_Site" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Sale_Orde__Clien__52593CB8" FromRole="Client" ToRole="Sale_Order" />
+        </EntityType>
+        <EntityType Name="Release_Order">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="Int64" Nullable="false" />
+          <Property Name="Store_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Date" Type="DateTime" Precision="0" />
+          <Property Name="Supplier_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class_Has_Release_Order" Relationship="Self.FK__Class_Has__Relea__2BFE89A6" FromRole="Release_Order" ToRole="Class_Has_Release_Order" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__Release_O__Store__36B12243" FromRole="Release_Order" ToRole="Store" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__Release_O__Suppl__37A5467C" FromRole="Release_Order" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Sale_Order">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="Int64" Nullable="false" />
+          <Property Name="Store_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Date" Type="DateTime" Precision="0" />
+          <Property Name="Client_Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class_Has_Sale_Order" Relationship="Self.FK__Class_Has__Order__282DF8C2" FromRole="Sale_Order" ToRole="Class_Has_Sale_Order" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Sale_Orde__Clien__52593CB8" FromRole="Sale_Order" ToRole="Client" />
+          <NavigationProperty Name="Store" Relationship="Self.FK__Sale_Orde__Store__5165187F" FromRole="Sale_Order" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="C_Name" />
+          </Key>
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Release_Order" Relationship="Self.FK__Release_O__Store__36B12243" FromRole="Store" ToRole="Release_Order" />
+          <NavigationProperty Name="Sale_Order" Relationship="Self.FK__Sale_Orde__Store__5165187F" FromRole="Store" ToRole="Sale_Order" />
+          <NavigationProperty Name="Classes" Relationship="Self.Class_Store" FromRole="Store" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Fax" />
+          </Key>
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_Site" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Release_Order" Relationship="Self.FK__Release_O__Suppl__37A5467C" FromRole="Supplier" ToRole="Release_Order" />
+        </EntityType>
+        <Association Name="FK__Class_Has__Class__2739D489">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Has_Sale_Order">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Class__2B0A656D">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Has_Release_Order">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Mea__Class__286302EC">
+          <End Role="Class" Type="Self.Class" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class_Measure_Unit" Type="Self.Class_Measure_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Class_Measure_Unit">
+              <PropertyRef Name="Class_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Relea__2BFE89A6">
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="1" />
+          <End Role="Class_Has_Release_Order" Type="Self.Class_Has_Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Release_Order">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Class_Has_Release_Order">
+              <PropertyRef Name="Release_Order_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__Order__282DF8C2">
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="1" />
+          <End Role="Class_Has_Sale_Order" Type="Self.Class_Has_Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale_Order">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Class_Has_Sale_Order">
+              <PropertyRef Name="Order_Sale_Num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Orde__Clien__52593CB8">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Fax" />
+            </Principal>
+            <Dependent Role="Sale_Order">
+              <PropertyRef Name="Client_Fax" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Release_O__Store__36B12243">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="C_Name" />
+            </Principal>
+            <Dependent Role="Release_Order">
+              <PropertyRef Name="Store_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Release_O__Suppl__37A5467C">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Release_Order" Type="Self.Release_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Fax" />
+            </Principal>
+            <Dependent Role="Release_Order">
+              <PropertyRef Name="Supplier_Fax" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Orde__Store__5165187F">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Sale_Order" Type="Self.Sale_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="C_Name" />
+            </Principal>
+            <Dependent Role="Sale_Order">
+              <PropertyRef Name="Store_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Class_Store">
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CompanyProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Class_Has_Release_Order" EntityType="Self.Class_Has_Release_Order" />
+          <EntitySet Name="Class_Has_Sale_Order" EntityType="Self.Class_Has_Sale_Order" />
+          <EntitySet Name="Class_Measure_Unit" EntityType="Self.Class_Measure_Unit" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Release_Order" EntityType="Self.Release_Order" />
+          <EntitySet Name="Sale_Order" EntityType="Self.Sale_Order" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <AssociationSet Name="FK__Class_Has__Class__2739D489" Association="Self.FK__Class_Has__Class__2739D489">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Class__2B0A656D" Association="Self.FK__Class_Has__Class__2B0A656D">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Mea__Class__286302EC" Association="Self.FK__Class_Mea__Class__286302EC">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Class_Measure_Unit" EntitySet="Class_Measure_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Relea__2BFE89A6" Association="Self.FK__Class_Has__Relea__2BFE89A6">
+            <End Role="Release_Order" EntitySet="Release_Order" />
+            <End Role="Class_Has_Release_Order" EntitySet="Class_Has_Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__Order__282DF8C2" Association="Self.FK__Class_Has__Order__282DF8C2">
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+            <End Role="Class_Has_Sale_Order" EntitySet="Class_Has_Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Orde__Clien__52593CB8" Association="Self.FK__Sale_Orde__Clien__52593CB8">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Release_O__Store__36B12243" Association="Self.FK__Release_O__Store__36B12243">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Release_Order" EntitySet="Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Release_O__Suppl__37A5467C" Association="Self.FK__Release_O__Suppl__37A5467C">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Release_Order" EntitySet="Release_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Orde__Store__5165187F" Association="Self.FK__Sale_Orde__Store__5165187F">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Sale_Order" EntitySet="Sale_Order" />
+          </AssociationSet>
+          <AssociationSet Name="Class_Store" Association="Self.Class_Store">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <FunctionImport Name="Class_Delete" ReturnType="Collection(CompanyProjectModel.Class_Delete_Result)">
+          <Parameter Name="CO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Release_Order_Delete" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Delete_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="RO" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Release_Order_Insert" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Insert_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="RO" Mode="In" Type="Int64" />
+            <Parameter Name="QTY" Mode="In" Type="String" />
+            <Parameter Name="PRO_D" Mode="In" Type="DateTime" />
+            <Parameter Name="EXP_D" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Release_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_SelectAll_Result)" />
+          <FunctionImport Name="Class_Has_Release_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_SelectBY_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="RO" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Release_Order_Update" ReturnType="Collection(CompanyProjectModel.Class_Has_Release_Order_Update_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="RO" Mode="In" Type="Int64" />
+            <Parameter Name="QTY" Mode="In" Type="String" />
+            <Parameter Name="PRO_D" Mode="In" Type="DateTime" />
+            <Parameter Name="EXP_D" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Sale_Order_Delete" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Delete_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="OS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Sale_Order_Insert" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Insert_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="OS" Mode="In" Type="Int64" />
+            <Parameter Name="QTY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Sale_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_SelectAll_Result)" />
+          <FunctionImport Name="Class_Has_Sale_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_SelectBY_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="OS" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Has_Sale_Order_Update" ReturnType="Collection(CompanyProjectModel.Class_Has_Sale_Order_Update_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="OS" Mode="In" Type="Int64" />
+            <Parameter Name="QTY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Insert" ReturnType="Collection(CompanyProjectModel.Class_Insert_Result)">
+            <Parameter Name="CO" Mode="In" Type="String" />
+            <Parameter Name="NA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Measure_Unit_Delete" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Delete_Result)">
+          <Parameter Name="CCO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Measure_Unit_Insert" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Insert_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="MU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Measure_Unit_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_SelectAll_Result)" />
+          <FunctionImport Name="Class_Measure_Unit_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_SelectBY_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="MU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Measure_Unit_Update" ReturnType="Collection(CompanyProjectModel.Class_Measure_Unit_Update_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="MU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_SelectAll_Result)" />
+          <FunctionImport Name="Class_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_SelectBY_Result)">
+          <Parameter Name="CO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Store_Delete" ReturnType="Collection(CompanyProjectModel.Class_Store_Delete_Result)">
+          <Parameter Name="SN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Store_Insert" ReturnType="Collection(CompanyProjectModel.Class_Store_Insert_Result)">
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Store_SelectAll" ReturnType="Collection(CompanyProjectModel.Class_Store_SelectAll_Result)" />
+          <FunctionImport Name="Class_Store_SelectBY" ReturnType="Collection(CompanyProjectModel.Class_Store_SelectBY_Result)">
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="SN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Store_Unit_SelectB" ReturnType="Collection(CompanyProjectModel.Class_Store_Unit_SelectB_Result)">
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Store_Update" ReturnType="Collection(CompanyProjectModel.Class_Store_Update_Result)">
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Update" ReturnType="Collection(CompanyProjectModel.Class_Update_Result)">
+            <Parameter Name="CO" Mode="In" Type="String" />
+            <Parameter Name="NA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Client_Delete" ReturnType="Collection(CompanyProjectModel.Client_Delete_Result)">
+          <Parameter Name="FAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Client_Insert" ReturnType="Collection(CompanyProjectModel.Client_Insert_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="TELE" Mode="In" Type="String" />
+            <Parameter Name="PHO" Mode="In" Type="String" />
+            <Parameter Name="FAX" Mode="In" Type="String" />
+            <Parameter Name="MAIL" Mode="In" Type="String" />
+            <Parameter Name="SIT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Client_SelectAll" ReturnType="Collection(CompanyProjectModel.Client_SelectAll_Result)" />
+          <FunctionImport Name="Client_SelectBY" ReturnType="Collection(CompanyProjectModel.Client_SelectBY_Result)">
+          <Parameter Name="FAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Client_Update" ReturnType="Collection(CompanyProjectModel.Client_Update_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="TELE" Mode="In" Type="String" />
+            <Parameter Name="PHO" Mode="In" Type="String" />
+            <Parameter Name="FAX" Mode="In" Type="String" />
+            <Parameter Name="MAIL" Mode="In" Type="String" />
+            <Parameter Name="SIT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenRelease_Insert">
+            <Parameter Name="STRNAM" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+            <Parameter Name="SUPNAM" Mode="In" Type="String" />
+            <Parameter Name="PROD" Mode="In" Type="DateTime" />
+            <Parameter Name="EXEP" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenRelease_SelectAll" ReturnType="Collection(CompanyProjectModel.CommonBetweenRelease_SelectAll_Result)" />
+          <FunctionImport Name="CommonBetweenRelease_Update2">
+            <Parameter Name="STRN" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+            <Parameter Name="SUPNAM" Mode="In" Type="String" />
+            <Parameter Name="PROD" Mode="In" Type="DateTime" />
+            <Parameter Name="EXP" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenRelease_UpdateAll">
+            <Parameter Name="STRN" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+            <Parameter Name="SUPNAM" Mode="In" Type="String" />
+            <Parameter Name="PROD" Mode="In" Type="DateTime" />
+            <Parameter Name="EXP" Mode="In" Type="DateTime" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="SUPFAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenSale_Insert">
+            <Parameter Name="STRNAM" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="CLINAM" Mode="In" Type="String" />
+            <Parameter Name="QUANTITY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenSale_SelectAll" ReturnType="Collection(CompanyProjectModel.CommonBetweenSale_SelectAll_Result)" />
+          <FunctionImport Name="CommonBetweenSale_Update">
+            <Parameter Name="STRNAM" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="CLINAM" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="CLIFAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CommonBetweenSale_Update2">
+            <Parameter Name="STRNAM" Mode="In" Type="String" />
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="CLSNAM" Mode="In" Type="String" />
+            <Parameter Name="CLINAM" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Release_Order_Delete" ReturnType="Collection(CompanyProjectModel.Release_Order_Delete_Result)">
+          <Parameter Name="NUM" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Release_Order_Insert" ReturnType="Collection(CompanyProjectModel.Release_Order_Insert_Result)">
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="DT" Mode="In" Type="DateTime" />
+            <Parameter Name="SF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Release_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Release_Order_SelectAll_Result)" />
+          <FunctionImport Name="Release_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Release_Order_SelectBY_Result)">
+          <Parameter Name="NUM" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Release_Order_Update" ReturnType="Collection(CompanyProjectModel.Release_Order_Update_Result)">
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="DT" Mode="In" Type="DateTime" />
+            <Parameter Name="SF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sale_Order_Delete" ReturnType="Collection(CompanyProjectModel.Sale_Order_Delete_Result)">
+          <Parameter Name="NUM" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Sale_Order_Insert" ReturnType="Collection(CompanyProjectModel.Sale_Order_Insert_Result)">
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="DT" Mode="In" Type="DateTime" />
+            <Parameter Name="CF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sale_Order_SelectAll" ReturnType="Collection(CompanyProjectModel.Sale_Order_SelectAll_Result)" />
+          <FunctionImport Name="Sale_Order_SelectBY" ReturnType="Collection(CompanyProjectModel.Sale_Order_SelectBY_Result)">
+          <Parameter Name="NUM" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Sale_Order_Update" ReturnType="Collection(CompanyProjectModel.Sale_Order_Update_Result)">
+            <Parameter Name="NUM" Mode="In" Type="Int64" />
+            <Parameter Name="SN" Mode="In" Type="String" />
+            <Parameter Name="DT" Mode="In" Type="DateTime" />
+            <Parameter Name="CF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ShowClass" ReturnType="Collection(CompanyProjectModel.ShowClass_Result)">
+          <Parameter Name="STN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Store_Delete" ReturnType="Collection(CompanyProjectModel.Store_Delete_Result)">
+          <Parameter Name="NA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Store_Insert" ReturnType="Collection(CompanyProjectModel.Store_Insert_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="ADRS" Mode="In" Type="String" />
+            <Parameter Name="MNGR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Store_SelectAll" ReturnType="Collection(CompanyProjectModel.Store_SelectAll_Result)" />
+          <FunctionImport Name="Store_SelectBY" ReturnType="Collection(CompanyProjectModel.Store_SelectBY_Result)">
+          <Parameter Name="NA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Store_Update" ReturnType="Collection(CompanyProjectModel.Store_Update_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="ADRS" Mode="In" Type="String" />
+            <Parameter Name="MNGR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_Delete" ReturnType="Collection(CompanyProjectModel.Supplier_Delete_Result)">
+          <Parameter Name="FAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_Insert" ReturnType="Collection(CompanyProjectModel.Supplier_Insert_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="TELE" Mode="In" Type="String" />
+            <Parameter Name="PHO" Mode="In" Type="String" />
+            <Parameter Name="FAX" Mode="In" Type="String" />
+            <Parameter Name="MAIL" Mode="In" Type="String" />
+            <Parameter Name="SIT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_SelectAll" ReturnType="Collection(CompanyProjectModel.Supplier_SelectAll_Result)" />
+          <FunctionImport Name="Supplier_SelectBY" ReturnType="Collection(CompanyProjectModel.Supplier_SelectBY_Result)">
+          <Parameter Name="FAX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_Update" ReturnType="Collection(CompanyProjectModel.Supplier_Update_Result)">
+            <Parameter Name="NA" Mode="In" Type="String" />
+            <Parameter Name="TELE" Mode="In" Type="String" />
+            <Parameter Name="PHO" Mode="In" Type="String" />
+            <Parameter Name="FAX" Mode="In" Type="String" />
+            <Parameter Name="MAIL" Mode="In" Type="String" />
+            <Parameter Name="SIT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Transfer_Classes" ReturnType="Collection(CompanyProjectModel.Transfer_Classes_Result)">
+            <Parameter Name="ONUM" Mode="In" Type="Int64" />
+            <Parameter Name="CCO" Mode="In" Type="String" />
+            <Parameter Name="FST" Mode="In" Type="String" />
+            <Parameter Name="TST" Mode="In" Type="String" />
+            <Parameter Name="QUAN" Mode="In" Type="String" />
+            <Parameter Name="SUPNAM" Mode="In" Type="String" />
+            <Parameter Name="PROD" Mode="In" Type="DateTime" />
+            <Parameter Name="EXP" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Store_Report2" ReturnType="Collection(CompanyProjectModel.Store_Report2_Result)">
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Class_Report" ReturnType="Collection(CompanyProjectModel.Class_Report_Result)" />
+          <FunctionImport Name="Class_Report1" ReturnType="Collection(CompanyProjectModel.Class_Report1_Result)">
+            <Parameter Name="STRNM" Mode="In" Type="String" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="EXPDA" ReturnType="Collection(CompanyProjectModel.EXPDA_Result)">
+            <Parameter Name="TIME" Mode="In" Type="Int64" />
+            <Parameter Name="DAT" Mode="In" Type="DateTime" />
+            <Parameter Name="DAT1" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="EXPDA1" ReturnType="Collection(CompanyProjectModel.EXPDA1_Result)">
+            <Parameter Name="TIME" Mode="In" Type="Int64" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Class_Delete_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Release_Order_Delete_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Release_Order_Insert_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Release_Order_SelectAll_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Release_Order_SelectBY_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Release_Order_Update_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Release_Order_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Sale_Order_Delete_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Sale_Order_Insert_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Sale_Order_SelectAll_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Sale_Order_SelectBY_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Has_Sale_Order_Update_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Order_Sale_Num" Nullable="false" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Insert_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Measure_Unit_Delete_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Measure_Unit_Insert_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Measure_Unit_SelectAll_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Measure_Unit_SelectBY_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Measure_Unit_Update_Result">
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Measure_Unit" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_SelectAll_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_SelectBY_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_Delete_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_Insert_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_SelectAll_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_SelectBY_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_Unit_SelectB_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Store_Update_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Class_Update_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Client_Delete_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Client_Insert_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Client_SelectAll_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Client_SelectBY_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Client_Update_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="CommonBetweenRelease_SelectAll_Result">
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Production_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Expiration_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CommonBetweenSale_SelectAll_Result">
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Quantity" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Release_Order_Delete_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Release_Order_Insert_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Release_Order_SelectAll_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Release_Order_SelectBY_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Release_Order_Update_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Supplier_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sale_Order_Delete_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sale_Order_Insert_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sale_Order_SelectAll_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sale_Order_SelectBY_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sale_Order_Update_Result">
+          <Property Type="Int64" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Store_Name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="C_Date" Nullable="true" />
+          <Property Type="String" Name="Client_Fax" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ShowClass_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Store_Delete_Result">
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Store_Insert_Result">
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Store_SelectAll_Result">
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Store_SelectBY_Result">
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Store_Update_Result">
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="C_Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Supplier_Delete_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Supplier_Insert_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Supplier_SelectAll_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Supplier_SelectBY_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Supplier_Update_Result">
+          <Property Type="String" Name="C_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telephone" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="C_Site" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Transfer_Classes_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Store_Report2_Result">
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Store_Adrees" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Store_Manager" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+          <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Report_Result">
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+          <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Class_Report1_Result">
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Store_Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Sale_order_date" Nullable="true" />
+          <Property Type="DateTime" Name="Release_order_date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EXPDA_Result">
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="EXPDA1_Result">
+          <Property Type="String" Name="Class_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Class_Code" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompanyProjectModelStoreContainer" CdmEntityContainer="CompanyProjectEntities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Has_Release_Order">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order">
+              <MappingFragment StoreEntitySet="Class_Has_Release_Order">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Has_Sale_Order">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order">
+              <MappingFragment StoreEntitySet="Class_Has_Sale_Order">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Measure_Unit">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit">
+              <MappingFragment StoreEntitySet="Class_Measure_Unit">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Release_Order">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Release_Order">
+              <MappingFragment StoreEntitySet="Release_Order">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale_Order">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Sale_Order">
+              <MappingFragment StoreEntitySet="Sale_Order">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="CompanyProjectModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Class_Store" TypeName="CompanyProjectModel.Class_Store" StoreEntitySet="Class_Store">
+            <EndProperty Name="Class">
+              <ScalarProperty Name="Code" ColumnName="Class_Code" />
+            </EndProperty>
+            <EndProperty Name="Store">
+              <ScalarProperty Name="C_Name" ColumnName="Store_Name" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Class_Delete" FunctionName="CompanyProjectModel.Store.Class_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Delete_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Delete" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Delete_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Insert" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Insert_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_SelectAll_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_SelectBY_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Release_Order_Update" FunctionName="CompanyProjectModel.Store.Class_Has_Release_Order_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Release_Order_Update_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Release_Order_Num" ColumnName="Release_Order_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Delete" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Delete_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Insert" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Insert_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_SelectAll_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_SelectBY_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Has_Sale_Order_Update" FunctionName="CompanyProjectModel.Store.Class_Has_Sale_Order_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Has_Sale_Order_Update_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Order_Sale_Num" ColumnName="Order_Sale_Num" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Insert" FunctionName="CompanyProjectModel.Store.Class_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Insert_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Delete" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Delete_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Insert" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Insert_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Measure_Unit_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_SelectAll_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Measure_Unit_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_SelectBY_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Measure_Unit_Update" FunctionName="CompanyProjectModel.Store.Class_Measure_Unit_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Measure_Unit_Update_Result">
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+                <ScalarProperty Name="Measure_Unit" ColumnName="Measure_Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_SelectAll" FunctionName="CompanyProjectModel.Store.Class_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_SelectAll_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_SelectBY" FunctionName="CompanyProjectModel.Store.Class_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_SelectBY_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_Delete" FunctionName="CompanyProjectModel.Store.Class_Store_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Delete_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_Insert" FunctionName="CompanyProjectModel.Store.Class_Store_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Insert_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_SelectAll" FunctionName="CompanyProjectModel.Store.Class_Store_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_SelectAll_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_SelectBY" FunctionName="CompanyProjectModel.Store.Class_Store_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_SelectBY_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_Unit_SelectB" FunctionName="CompanyProjectModel.Store.Class_Store_Unit_SelectB">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Unit_SelectB_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Store_Update" FunctionName="CompanyProjectModel.Store.Class_Store_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Store_Update_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Update" FunctionName="CompanyProjectModel.Store.Class_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Update_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_Delete" FunctionName="CompanyProjectModel.Store.Client_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Delete_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_Insert" FunctionName="CompanyProjectModel.Store.Client_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Insert_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_SelectAll" FunctionName="CompanyProjectModel.Store.Client_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Client_SelectAll_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_SelectBY" FunctionName="CompanyProjectModel.Store.Client_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Client_SelectBY_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Client_Update" FunctionName="CompanyProjectModel.Store.Client_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Client_Update_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CommonBetweenRelease_Insert" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_Insert" />
+          <FunctionImportMapping FunctionImportName="CommonBetweenRelease_SelectAll" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.CommonBetweenRelease_SelectAll_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="C_Name1" ColumnName="_Name1" />
+                <ScalarProperty Name="Production_Date" ColumnName="Production_Date" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CommonBetweenRelease_Update2" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_Update2" />
+          <FunctionImportMapping FunctionImportName="CommonBetweenRelease_UpdateAll" FunctionName="CompanyProjectModel.Store.CommonBetweenRelease_UpdateAll" />
+          <FunctionImportMapping FunctionImportName="CommonBetweenSale_Insert" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Insert" />
+          <FunctionImportMapping FunctionImportName="CommonBetweenSale_SelectAll" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.CommonBetweenSale_SelectAll_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Name1" ColumnName="_Name1" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CommonBetweenSale_Update" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Update" />
+          <FunctionImportMapping FunctionImportName="CommonBetweenSale_Update2" FunctionName="CompanyProjectModel.Store.CommonBetweenSale_Update2" />
+          <FunctionImportMapping FunctionImportName="Release_Order_Delete" FunctionName="CompanyProjectModel.Store.Release_Order_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Delete_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Release_Order_Insert" FunctionName="CompanyProjectModel.Store.Release_Order_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Insert_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Release_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Release_Order_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_SelectAll_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Release_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Release_Order_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_SelectBY_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Release_Order_Update" FunctionName="CompanyProjectModel.Store.Release_Order_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Release_Order_Update_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Supplier_Fax" ColumnName="Supplier_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sale_Order_Delete" FunctionName="CompanyProjectModel.Store.Sale_Order_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Delete_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sale_Order_Insert" FunctionName="CompanyProjectModel.Store.Sale_Order_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Insert_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sale_Order_SelectAll" FunctionName="CompanyProjectModel.Store.Sale_Order_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_SelectAll_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sale_Order_SelectBY" FunctionName="CompanyProjectModel.Store.Sale_Order_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_SelectBY_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sale_Order_Update" FunctionName="CompanyProjectModel.Store.Sale_Order_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Sale_Order_Update_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="C_Date" ColumnName="_Date" />
+                <ScalarProperty Name="Client_Fax" ColumnName="Client_Fax" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowClass" FunctionName="CompanyProjectModel.Store.ShowClass">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.ShowClass_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_Delete" FunctionName="CompanyProjectModel.Store.Store_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Delete_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_Insert" FunctionName="CompanyProjectModel.Store.Store_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Insert_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_SelectAll" FunctionName="CompanyProjectModel.Store.Store_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_SelectAll_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_SelectBY" FunctionName="CompanyProjectModel.Store.Store_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_SelectBY_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_Update" FunctionName="CompanyProjectModel.Store.Store_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Update_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Supplier_Delete" FunctionName="CompanyProjectModel.Store.Supplier_Delete">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Delete_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Supplier_Insert" FunctionName="CompanyProjectModel.Store.Supplier_Insert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Insert_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Supplier_SelectAll" FunctionName="CompanyProjectModel.Store.Supplier_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_SelectAll_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Supplier_SelectBY" FunctionName="CompanyProjectModel.Store.Supplier_SelectBY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_SelectBY_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Supplier_Update" FunctionName="CompanyProjectModel.Store.Supplier_Update">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Supplier_Update_Result">
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="C_Site" ColumnName="_Site" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Transfer_Classes" FunctionName="CompanyProjectModel.Store.Transfer_Classes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Transfer_Classes_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Store_Report2" FunctionName="CompanyProjectModel.Store.Store_Report2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Store_Report2_Result">
+                <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+                <ScalarProperty Name="Store_Adrees" ColumnName="Store Adrees" />
+                <ScalarProperty Name="Store_Manager" ColumnName="Store Manager" />
+                <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+                <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+                <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Report" FunctionName="CompanyProjectModel.Store.Class_Report">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Report_Result">
+                <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+                <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+                <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Class_Report1" FunctionName="CompanyProjectModel.Store.Class_Report1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.Class_Report1_Result">
+                <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+                <ScalarProperty Name="Sale_order_date" ColumnName="Sale order date" />
+                <ScalarProperty Name="Release_order_date" ColumnName="Release order date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EXPDA" FunctionName="CompanyProjectModel.Store.EXPDA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.EXPDA_Result">
+                <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EXPDA1" FunctionName="CompanyProjectModel.Store.EXPDA1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CompanyProjectModel.EXPDA1_Result">
+                <ScalarProperty Name="Class_Name" ColumnName="Class Name" />
+                <ScalarProperty Name="Class_Code" ColumnName="Class Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
